@@ -62,12 +62,16 @@ def is_subset(list1, list2):
    return set1.issubset(list2)
 
 def multiple_item_frequency(data, combinations):
-    for order in data:
-        for subset in combinations:
+    subset_frequency = {}
+    for subset in combinations:
+        for order in data:
             if is_subset(subset, order):
-                print subset
-                print 'is subset of order'
-                print order
+                if subset in subset_frequency:
+                    subset_frequency[subset] = subset_frequency[subset] + 1
+                else:
+                    subset_frequency[subset] = 1
+
+    return subset_frequency
 
 def apriori(data, support=.5, confidence=.5):
     items = filter_items(data)
@@ -84,8 +88,9 @@ def apriori(data, support=.5, confidence=.5):
         item_combination = get_combinations(items, counter)
         for item in item_combination:
             #frequency for item_combinations
-            multiple_item_frequency(data, item_combination)
+            subset_freq = multiple_item_frequency(data, item_combination)
 
         counter = counter + 1
+        print subset_freq
     
     return data
