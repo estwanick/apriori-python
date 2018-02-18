@@ -18,17 +18,21 @@ def fetch_db(db_name):
     with conn:
         cur = conn.cursor()
         cur.execute('select * from Transactions order by id')
-        rows = cur.fetchall()
-        formatted_orders = {}
-
-        for row in rows:
-            order_id = row[0]
-            item_id = row[1]
-            if order_id in formatted_orders:
-                formatted_orders[order_id].append(item_id)
+        orders = cur.fetchall()
+        cur.execute('select * from Items order by id')
+        items = cur.fetchall()
+        formatted_orders = []
+        previous_order = None
+        for order in orders:
+            order_id = order[0]
+            item_id = order[1]
+            item_text = items[item_id][1].encode("ascii")
+            if order_id is not None and previous_order == order_id:
+                formatted_orders[order_id].append(item_text)
             else:
-                formatted_orders[order_id] = []
-                formatted_orders[order_id].append(item_id)
+                formatted_orders.append([])
+                formatted_orders[order_id].append(item_text)
+                previous_order = order_id
 
         return formatted_orders
 
