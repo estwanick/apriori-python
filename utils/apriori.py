@@ -56,6 +56,19 @@ def biggest_order(data):
             max_length = len(order)
     return max_length
 
+def is_subset(list1, list2):
+   set1 = set(list1)
+   set2 = set(list2)
+   return set1.issubset(list2)
+
+def multiple_item_frequency(data, combinations):
+    for order in data:
+        for subset in combinations:
+            if is_subset(subset, order):
+                print subset
+                print 'is subset of order'
+                print order
+
 def apriori(data, support=.5, confidence=.5):
     items = filter_items(data)
     total_transactions = num_transactions(data)
@@ -67,12 +80,12 @@ def apriori(data, support=.5, confidence=.5):
 
     counter = 2
     candidate_set = []
-    while counter <= most_items: 
+    while counter <= 2: #most_items: 
         item_combination = get_combinations(items, counter)
         for item in item_combination:
-            print item
-        print '---'
-        counter = counter + 1
-        
+            #frequency for item_combinations
+            multiple_item_frequency(data, item_combination)
 
+        counter = counter + 1
+    
     return data
