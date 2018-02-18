@@ -1,4 +1,4 @@
-import utils.apriori
+from utils.apriori import apriori
 from utils.db import fetch_db
 
 amazon =  fetch_db('amazon.db')
@@ -7,5 +7,7 @@ shoprite =  fetch_db('shoprite.db')
 walmart =  fetch_db('walmart.db')
 wawa =  fetch_db('wawa.db')
 
-print amazon
+results = list(apriori(amazon))
+
+print results
     
