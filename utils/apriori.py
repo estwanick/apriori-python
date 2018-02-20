@@ -87,7 +87,7 @@ def apriori(data, support=.5, confidence=.5):
         subset_freq = multiple_item_frequency(data, item_combination)
             
         filtered_support = filter_by_support(subset_freq, support, total_transactions)
-        confidence_values.append(calculate_confidence(filtered_support, data))
+        confidence_values.append(calculate_confidence(filtered_support, data)) #TODO: Filter items that do not meet confidence requirements
         counter = counter + 1
 
     return confidence_values
