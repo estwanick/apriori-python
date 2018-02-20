@@ -7,7 +7,4 @@ shoprite =  fetch_db('shoprite.db')
 walmart =  fetch_db('walmart.db')
 wawa =  fetch_db('wawa.db')
 
-results = list(apriori(amazon))
-
-print results
-    
+results = apriori(amazon)

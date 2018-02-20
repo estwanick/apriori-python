@@ -3,16 +3,6 @@ import itertools
 def num_transactions(data):
     return len(data)
 
-def frequency_table(data):
-    frequency_map = {}
-    for order in data:
-        for item in order:
-            if item in frequency_map:
-                frequency_map[item] = frequency_map[item] + 1
-            else:
-                frequency_map[item] = 1
-    return frequency_map
-
 def filter_by_support(frequency_map, support, transactions):
     filtered_items = {}
     for item in frequency_map:
@@ -34,20 +24,6 @@ def filter_items(data):
 
 def get_combinations(items, length):
     return itertools.combinations(items, length)
-
-def make_pairs(data):
-    items = filter_items(data)
-    pairs = []
-    for current in xrange(len(items) - 1):
-        for compare in xrange(len(items) - 1):
-            if items[current] == items[compare]:
-                pass
-            elif items[current] < items[compare]:
-                pair = (items[current], items[compare])
-                pairs.append(pair)
-            else:
-                pass
-    return pairs
 
 def biggest_order(data):
     max_length = -1
@@ -77,6 +53,7 @@ def multiple_item_frequency(data, combinations):
 
     return subset_frequency
 
+# Determine the frequency of a tuple in a list of tuples
 def group_frequency(group, data):
     count = 0
     for order in data:
@@ -87,37 +64,31 @@ def group_frequency(group, data):
 # Determine the confidence of an group of items being responsible for the purchase of another
 # Confidence defined as support{x,y}/support{x}
 def calculate_confidence(support_map, data):
-    for items in support_map:
-        numerator = group_frequency(items, data)
-        denominator = group_frequency([items[0]], data)
-        confidence = float(numerator) / float(denominator)
-        print ''
+    for group in support_map:
+        # should get confidence of each item in the set not just the first
+        for item in group:
+            numerator = group_frequency(group, data)
+            denominator = group_frequency([item], data)
+            confidence = float(numerator) / float(denominator)
+            without_item = list(group)
+            without_item.remove(item) # Remove current item from output
+            print '{} => {} : {:.2f}%'.format(without_item, item, confidence * 100)
+            # push confidence to map
 
     return True
 
 def apriori(data, support=.5, confidence=.5):
     items = filter_items(data)
     total_transactions = num_transactions(data)
-    frequecy = frequency_table(data)
-    filtered_support = filter_by_support(frequecy, support, total_transactions)
-    # common_pairs = get_combinations(items, 2)
-    # all_combinations = get_combinations(items, len(items) - 1)
     most_items = biggest_order(data)
 
     counter = 2 #Start by comparing pairs of items
-    while counter <= 2: #most_items: 
+    while counter <= most_items: 
         item_combination = get_combinations(items, counter)
-        for item in item_combination:
-            #frequency for item_combinations
-            subset_freq = multiple_item_frequency(data, item_combination)
+        subset_freq = multiple_item_frequency(data, item_combination)
             
         filtered_support = filter_by_support(subset_freq, support, total_transactions)
-        #determine confidence
         confidence_map = calculate_confidence(filtered_support, data)
-
-        print counter
-        print 'item frequency'
-        print filtered_support
         counter = counter + 1
     
-    return data
+    return confidence_map
