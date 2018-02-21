@@ -1,3 +1,4 @@
+# pylint: disable=E1601
 def print_results(db, orders, apriori, support, confidence):
     rules = apriori['confidence']
     frequency = apriori['support']
