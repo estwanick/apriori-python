@@ -1,13 +1,21 @@
-def print_results(db, orders, rules, support, confidence):
+def print_results(db, orders, apriori, support, confidence):
+    rules = apriori['confidence']
+    frequency = apriori['support']
 
-    print 'Orders for: {}'.format(db)
-    print 'Meeting Support: {:.2f} and Confidence: {:.2f}'.format(support, confidence)
+    print db
+
+    print '\t All Orders'
 
     for order in orders:
-        print '\t {}'.format(order)
-    
-    print 'Associate Rules: {}'.format(db)
+        print '\t\t {}'.format(order)
+
+    print '\t Frequency Table: items with support greater than {:.2f}% support'.format(support * 100)
+    for item_group in frequency:
+        for item in item_group:
+            print '\t\t {} : {}'.format(item, item_group[item])
+
+    print '\t Associate Rules: rules with confidence greater than or equal to {:.2f}%'.format(confidence * 100)
 
     for pairs in rules:
         for rule in pairs:
-            print '\t {}'.format(rule)
+            print '\t\t {}'.format(rule)

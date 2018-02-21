@@ -63,7 +63,7 @@ def group_frequency(group, data):
 
 # Determine the confidence of an group of items being responsible for the purchase of another
 # Confidence defined as support{x,y}/support{x}
-def calculate_confidence(support_map, data):
+def calculate_confidence(support_map, data, allowed_confidence):
     confidence_values = []
     for group in support_map:
         for item in group:
@@ -72,7 +72,8 @@ def calculate_confidence(support_map, data):
             confidence = float(numerator) / float(denominator)
             without_item = list(group)
             without_item.remove(item) # Remove current item from output
-            confidence_values.append('{} => {} : {:.2f}%'.format(without_item, item, confidence * 100))
+            if(confidence >= allowed_confidence): 
+                confidence_values.append('{} => {} : {:.2f}%'.format(without_item, item, confidence * 100))
 
     return confidence_values
 
@@ -81,13 +82,18 @@ def apriori(data, support=.5, confidence=.5):
     total_transactions = num_transactions(data)
     most_items = biggest_order(data)
     confidence_values = []
+    support_values = []
     counter = 2 #Start by comparing pairs of items
     while counter <= most_items: 
         item_combination = get_combinations(items, counter)
         subset_freq = multiple_item_frequency(data, item_combination)
             
         filtered_support = filter_by_support(subset_freq, support, total_transactions)
-        confidence_values.append(calculate_confidence(filtered_support, data)) #TODO: Filter items that do not meet confidence requirements
+        confidence_values.append(calculate_confidence(filtered_support, data, confidence))
+        support_values.append(filtered_support)
         counter = counter + 1
 
-    return confidence_values
+    return {
+        'confidence': confidence_values,
+        'support': support_values
+    }

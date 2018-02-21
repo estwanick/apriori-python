@@ -1,3 +1,5 @@
+cd db
+
 find . -name "*.db" -type f -delete
 
 sqlite3 kmart.db < ./sql/populate-kmart.sql;

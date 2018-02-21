@@ -9,7 +9,9 @@ walmart =  fetch_db('walmart.db')
 wawa =  fetch_db('wawa.db')
 
 support = .5
-confidence = .5
+confidence = .8
+
+x = apriori(amazon, support, confidence)
 
 print_results(
     'Amazon',
