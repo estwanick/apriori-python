@@ -17,11 +17,11 @@ def fetch_db(db_name):
 
     with conn:
         cur = conn.cursor()
-        cur.execute('select * from Transactions order by id')
+        cur.execute('select * from Transactions order by id asc, item_id asc')
         orders = cur.fetchall()
         cur.execute('select * from Items order by id')
         items = cur.fetchall()
-        formatted_orders = []
+        formatted_orders = {}
         previous_order = None
         for order in orders:
             order_id = order[0]
@@ -30,10 +30,14 @@ def fetch_db(db_name):
             if order_id is not None and previous_order == order_id:
                 formatted_orders[order_id].append(item_text)
             else:
-                formatted_orders.append([])
+                formatted_orders[order_id] = []
                 formatted_orders[order_id].append(item_text)
                 previous_order = order_id
 
-        return formatted_orders
+        orders_array = []
+        for order in formatted_orders:
+            orders_array.append(formatted_orders[order])
+
+        return orders_array
 
         
