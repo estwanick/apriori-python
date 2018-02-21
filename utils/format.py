@@ -3,7 +3,7 @@ def print_results(db, orders, apriori, support, confidence):
     rules = apriori['confidence']
     frequency = apriori['support']
 
-    print db
+    print 'Database: {}'.format(db)
 
     print '\t All Orders'
 
