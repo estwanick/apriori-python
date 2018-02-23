@@ -2,7 +2,12 @@
 Implementation of Apriori Algorithm
 
 ### To Run:
-```python index.py```
+Calling without parameters will default Support=.5 and Confidence=.5
+```python index.py``` 
+
+Passing Support and Confidence as parameters
+```python index.py --support .7 --confidence .7```
+
 
 ### To Run and Repopulate database
 ```./setup.sh && python index.py```

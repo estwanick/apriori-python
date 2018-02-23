@@ -16,8 +16,8 @@ wawa =  fetch_db('wawa.db')
 
 args=parser.parse_args()
 
-support = float(args.support) # TODO: Resolve error caused by passing cmd arg
-confidence = float(args.confidence)
+support = float(args.support) if args.support is not None else .5
+confidence = float(args.confidence) if args.confidence is not None else .5
 
 print_results(
     'Amazon',
