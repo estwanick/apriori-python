@@ -6,7 +6,7 @@ import argparse
 parser=argparse.ArgumentParser()
 
 parser.add_argument('--support', help='Support threshold')
-parser.add_argument('--confidence', help='Confidence thrshold')
+parser.add_argument('--confidence', help='Confidence threshold')
 
 amazon =  fetch_db('amazon.db')
 kmart =  fetch_db('kmart.db')
