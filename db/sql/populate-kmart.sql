@@ -54,6 +54,25 @@ insert into Orders (id) values (17);
 insert into Orders (id) values (18);
 insert into Orders (id) values (19);
 
+insert into Transactions (id, item_id) values (2, 0);
+insert into Transactions (id, item_id) values (3, 0);
+insert into Transactions (id, item_id) values (4, 0);
+insert into Transactions (id, item_id) values (5, 0);
+insert into Transactions (id, item_id) values (6, 0);
+insert into Transactions (id, item_id) values (7, 0);
+
+insert into Transactions (id, item_id) values (7, 1);
+insert into Transactions (id, item_id) values (8, 1);
+insert into Transactions (id, item_id) values (9, 1);
+insert into Transactions (id, item_id) values (10, 1);
+insert into Transactions (id, item_id) values (11, 1);
+insert into Transactions (id, item_id) values (12, 1);
+insert into Transactions (id, item_id) values (13, 1);
+
+insert into Transactions (id, item_id) values (4, 6);
+insert into Transactions (id, item_id) values (5, 6);
+insert into Transactions (id, item_id) values (6, 6);
+insert into Transactions (id, item_id) values (7, 6);
 
 insert into Transactions (id, item_id) values (0, 7);
 insert into Transactions (id, item_id) values (1, 7);
@@ -82,17 +101,6 @@ insert into Transactions (id, item_id) values (8, 8);
 insert into Transactions (id, item_id) values (9, 8);
 insert into Transactions (id, item_id) values (10, 8);
 insert into Transactions (id, item_id) values (11, 8);
-
-insert into Transactions (id, item_id) values (0, 2);
-insert into Transactions (id, item_id) values (1, 2);
-insert into Transactions (id, item_id) values (2, 2);
-insert into Transactions (id, item_id) values (3, 2);
-insert into Transactions (id, item_id) values (4, 2);
-insert into Transactions (id, item_id) values (5, 2);
-insert into Transactions (id, item_id) values (6, 2);
-insert into Transactions (id, item_id) values (7, 2);
-insert into Transactions (id, item_id) values (8, 2);
-insert into Transactions (id, item_id) values (9, 2);
 
 insert into Transactions (id, item_id) values (0, 5);
 insert into Transactions (id, item_id) values (1, 5);

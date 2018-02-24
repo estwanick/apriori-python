@@ -67,6 +67,12 @@ insert into Transactions (id, item_id) values (9, 0);
 insert into Transactions (id, item_id) values (10, 0);
 insert into Transactions (id, item_id) values (11, 0);
 
+insert into Transactions (id, item_id) values (7, 1);
+insert into Transactions (id, item_id) values (8, 1);
+insert into Transactions (id, item_id) values (9, 1);
+insert into Transactions (id, item_id) values (10, 1);
+insert into Transactions (id, item_id) values (11, 1);
+
 insert into Transactions (id, item_id) values (0, 2);
 insert into Transactions (id, item_id) values (1, 2);
 insert into Transactions (id, item_id) values (2, 2);
@@ -77,18 +83,6 @@ insert into Transactions (id, item_id) values (6, 2);
 insert into Transactions (id, item_id) values (7, 2);
 insert into Transactions (id, item_id) values (8, 2);
 insert into Transactions (id, item_id) values (9, 2);
-
-insert into Transactions (id, item_id) values (0, 5);
-insert into Transactions (id, item_id) values (1, 5);
-insert into Transactions (id, item_id) values (2, 5);
-insert into Transactions (id, item_id) values (3, 5);
-insert into Transactions (id, item_id) values (4, 5);
-insert into Transactions (id, item_id) values (5, 5);
-insert into Transactions (id, item_id) values (6, 5);
-insert into Transactions (id, item_id) values (7, 5);
-insert into Transactions (id, item_id) values (8, 5);
-insert into Transactions (id, item_id) values (9, 5);
-insert into Transactions (id, item_id) values (10, 5);
 
 insert into Transactions (id, item_id) values (9, 3);
 insert into Transactions (id, item_id) values (10, 3);
@@ -113,3 +107,36 @@ insert into Transactions (id, item_id) values (16, 4);
 insert into Transactions (id, item_id) values (17, 4);
 insert into Transactions (id, item_id) values (18, 4);
 insert into Transactions (id, item_id) values (19, 4);
+
+insert into Transactions (id, item_id) values (0, 5);
+insert into Transactions (id, item_id) values (1, 5);
+insert into Transactions (id, item_id) values (2, 5);
+insert into Transactions (id, item_id) values (3, 5);
+insert into Transactions (id, item_id) values (4, 5);
+insert into Transactions (id, item_id) values (5, 5);
+insert into Transactions (id, item_id) values (6, 5);
+insert into Transactions (id, item_id) values (7, 5);
+insert into Transactions (id, item_id) values (8, 5);
+insert into Transactions (id, item_id) values (9, 5);
+insert into Transactions (id, item_id) values (10, 5);
+
+insert into Transactions (id, item_id) values (0, 6);
+insert into Transactions (id, item_id) values (1, 6);
+insert into Transactions (id, item_id) values (2, 6);
+insert into Transactions (id, item_id) values (3, 6);
+insert into Transactions (id, item_id) values (4, 6);
+
+insert into Transactions (id, item_id) values (15, 7);
+insert into Transactions (id, item_id) values (16, 7);
+insert into Transactions (id, item_id) values (17, 7);
+insert into Transactions (id, item_id) values (18, 7);
+insert into Transactions (id, item_id) values (19, 7);
+
+insert into Transactions (id, item_id) values (2, 8);
+insert into Transactions (id, item_id) values (3, 8);
+insert into Transactions (id, item_id) values (4, 8);
+insert into Transactions (id, item_id) values (5, 8);
+insert into Transactions (id, item_id) values (6, 8);
+
+insert into Transactions (id, item_id) values (0, 9);
+insert into Transactions (id, item_id) values (1, 9);
